@@ -17,8 +17,11 @@ public abstract class BaseMachine extends BaseEntity {
     @OneToOne
     @JsonIgnore
     private Player player;
+
     private int amount;
     private double price;
+
+    @JsonIgnore
     private double bonus;
 
 

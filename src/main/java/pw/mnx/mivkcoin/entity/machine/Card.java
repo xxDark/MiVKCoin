@@ -10,10 +10,11 @@ import javax.persistence.Table;
 @Table(name = "card")
 public class Card extends BaseMachine {
 
-    @JsonIgnore
-    private final double bonus = .003D;
     private double price = .1D;
     private int amount = 0;
+
+    @JsonIgnore
+    private final double bonus = .003D;
 
     public Card(Player player, int amount) {
         super(player, amount);

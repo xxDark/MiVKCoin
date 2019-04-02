@@ -12,7 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
@@ -21,12 +20,12 @@ import java.util.UUID;
 @Table(name = "player")
 @RequiredArgsConstructor
 public class Player extends BaseEntity {
+
     @JsonIgnore
     private UUID uuid;
+
     private double balance;
-
     private double income;
-
     private BaseMachine recommendation;
 
     @OneToOne(cascade= CascadeType.ALL)
@@ -56,11 +55,6 @@ public class Player extends BaseEntity {
         this.quantumComputer = new QuantumComputer(this, quantumComputer);
 
         updateIncome();
-        updateRecommendation();
-
-    }
-
-    private void updateRecommendation() {
     }
 
     private void updateIncome() {

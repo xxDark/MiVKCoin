@@ -19,7 +19,8 @@ public class CalcController {
     private final PlayerService playerService;
 
     @RequestMapping(path = "createPlayer/{click}/{card}/{cards}/{super_computer}/{vk_server}/{quantum_computer}/{balance}", method = RequestMethod.POST)
-    public ResponseEntity createPlayer(@PathVariable int click, @PathVariable int card, @PathVariable int cards, @PathVariable int super_computer, @PathVariable int vk_server, @PathVariable int quantum_computer, @PathVariable int balance) {
+    public ResponseEntity createPlayer(@PathVariable int click, @PathVariable int card, @PathVariable int cards, @PathVariable int super_computer,
+                                       @PathVariable int vk_server, @PathVariable int quantum_computer, @PathVariable int balance) {
         Player player = new Player(balance, click, card, cards, super_computer, vk_server, quantum_computer);
         playerService.savePlayer(player);
         return new ResponseEntity<>(player.getUuid(), HttpStatus.OK);
@@ -33,7 +34,7 @@ public class CalcController {
 
     @RequestMapping(path = "getInfo/{playerUUID}")
     public ResponseEntity getInfo(@PathVariable UUID playerUUID) {
-        Player player = playerService.getInfo(playerUUID);
+        Player player = playerService.getPlayer(playerUUID);
         return new ResponseEntity<>(player, HttpStatus.OK);
     }
 

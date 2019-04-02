@@ -12,6 +12,7 @@ public class QuantumComputer extends BaseMachine{
 
     private double price = 200D;
     private int amount = 0;
+
     @JsonIgnore
     private final double bonus = .5D;
 

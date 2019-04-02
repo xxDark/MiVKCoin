@@ -12,6 +12,7 @@ public class Click extends BaseMachine {
 
     private double price = .03D;
     private int amount = 0;
+
     @JsonIgnore
     private final double bonus = .001D;
 

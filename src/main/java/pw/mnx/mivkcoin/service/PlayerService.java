@@ -10,18 +10,18 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class PlayerService {
+
     private final PlayerRepository playerRepository;
 
     public void savePlayer(Player player) {
         playerRepository.saveAndFlush(player);
     }
 
-    public void updatePlayerBalance(UUID playerUUID, double balance) {
-        playerRepository.findByUuid(playerUUID).ifPresent(player -> player.setBalance(balance));
-    }
-
-    public Player getInfo(UUID playerUUID) {
+    public Player getPlayer(UUID playerUUID) {
         return playerRepository.findByUuid(playerUUID).orElse(null);
     }
 
+    public void updatePlayerBalance(UUID playerUUID, double balance) {
+        playerRepository.findByUuid(playerUUID).ifPresent(player -> player.setBalance(balance));
+    }
 }
