@@ -65,7 +65,7 @@ public class Player extends BaseEntity {
 
     private void updateIncome() {
         ArrayList<BaseMachine> baseMachineList = new ArrayList<>(Arrays.asList(click, card, cards, superComputer, vkServer, quantumComputer));
-
+        baseMachineList.forEach(baseMachine -> this.income += baseMachine.getAmount() * baseMachine.getBonus());
     }
 
 }
