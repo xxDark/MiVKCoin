@@ -11,6 +11,7 @@ import javax.persistence.Table;
 public class SuperComputer extends BaseMachine{
     private double price = 10D;
     private int amount = 0;
+    private double income;
 
     @JsonIgnore
     private final double bonus = .03D;

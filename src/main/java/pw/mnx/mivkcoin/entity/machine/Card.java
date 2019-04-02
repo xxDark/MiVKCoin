@@ -12,6 +12,7 @@ public class Card extends BaseMachine {
 
     private double price = .1D;
     private int amount = 0;
+    private double income;
 
     @JsonIgnore
     private final double bonus = .003D;

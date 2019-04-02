@@ -28,17 +28,17 @@ public class Player extends BaseEntity {
     private double income;
     private BaseMachine recommendation;
 
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Click click;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Card card;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Cards cards;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private SuperComputer superComputer;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private VkServer vkServer;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private QuantumComputer quantumComputer;
 
 
@@ -54,12 +54,14 @@ public class Player extends BaseEntity {
         this.vkServer = new VkServer(this, vkServer);
         this.quantumComputer = new QuantumComputer(this, quantumComputer);
 
-        updateIncome();
+        updateMachines();
     }
 
-    private void updateIncome() {
+
+    private void updateMachines() {
         ArrayList<BaseMachine> baseMachineList = new ArrayList<>(Arrays.asList(click, card, cards, superComputer, vkServer, quantumComputer));
-        baseMachineList.forEach(baseMachine -> this.income += baseMachine.getAmount() * baseMachine.getBonus());
+        baseMachineList.forEach(BaseMachine::calcPrice);
+        baseMachineList.forEach(baseMachine -> this.income += baseMachine.getIncome());
     }
 
 }

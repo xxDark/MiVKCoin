@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pw.mnx.mivkcoin.entity.Player;
 import pw.mnx.mivkcoin.repository.PlayerRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -19,6 +20,10 @@ public class PlayerService {
 
     public Player getPlayer(UUID playerUUID) {
         return playerRepository.findByUuid(playerUUID).orElse(null);
+    }
+
+    public List<Player> getAllPlayers() {
+        return playerRepository.findAll();
     }
 
     public void updatePlayerBalance(UUID playerUUID, double balance) {

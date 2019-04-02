@@ -20,6 +20,7 @@ public abstract class BaseMachine extends BaseEntity {
 
     private int amount;
     private double price;
+    private double income;
 
     @JsonIgnore
     private double bonus;
@@ -31,4 +32,15 @@ public abstract class BaseMachine extends BaseEntity {
     }
 
     BaseMachine() {}
+
+    public void calcPrice() {
+        for (int i = 0; i < this.getAmount(); i++) {
+            this.setPrice(Math.ceil(this.getPrice() / 1300D) * 1000D);
+        }
+    }
+
+    public void calcIncome() {
+        income = amount * bonus;
+    }
+
 }

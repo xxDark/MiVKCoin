@@ -13,6 +13,7 @@ public class VkServer extends BaseMachine{
 
     private double price = .50D;
     private int amount = 0;
+    private double income;
 
     @JsonIgnore
     private final double bonus = .1D;
